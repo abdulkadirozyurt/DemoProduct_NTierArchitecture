@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    public interface IEntityRepository<T> where T : class
+    public interface IGenericDal<T> where T : class
     {
         List<T> GetAll();
         void Add(T entity);
