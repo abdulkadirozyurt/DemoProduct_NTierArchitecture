@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes
 {
-    public class NTiesArchitectureContext : DbContext
+    public class NTierArchitectureContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
