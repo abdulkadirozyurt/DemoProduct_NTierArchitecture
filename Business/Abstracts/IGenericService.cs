@@ -8,13 +8,13 @@ namespace Business.Abstracts
 {
     public interface IGenericService<T>
     {
-        List<T> GetAll();
-        T GetById(int id);
+        List<T> TGetAll();
+        T TGetById(int id);
 
 
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        void TAdd(T entity);
+        void TDelete(T entity);
+        void TUpdate(T entity);
 
     }
 }

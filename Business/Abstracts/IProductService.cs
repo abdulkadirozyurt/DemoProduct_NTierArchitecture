@@ -9,5 +9,6 @@ namespace Business.Abstracts
 {
     public interface IProductService : IGenericService<Product>
     {
+
     }
 }
