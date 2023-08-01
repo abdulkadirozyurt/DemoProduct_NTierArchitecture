@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    public interface ICategoryDal
+    public interface ICategoryDal : IEntityRepository<Category>
     {
-        List<Category> ListCategories();
-        void Add(Category category);
-        void Delete(Category category);
-        void Update(Category category);
+        
     }
 }

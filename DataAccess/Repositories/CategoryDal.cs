@@ -12,6 +12,12 @@ namespace DataAccess.Repositories
     public class CategoryDal : ICategoryDal
     {
         NTierArchitectureContext context = new NTierArchitectureContext();
+
+        public List<Category> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(Category category)
         {
             throw new NotImplementedException();
@@ -20,12 +26,7 @@ namespace DataAccess.Repositories
         public void Delete(Category category)
         {
             throw new NotImplementedException();
-        }
-
-        public List<Category> ListCategories()
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public void Update(Category category)
         {

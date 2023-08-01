@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    public interface IProductDal
+    public interface IProductDal : IEntityRepository<Product>
     {
-        List<Product> ListProducts();
-        void Add(Product product);
-        void Delete(Product product);
-        void Update(Product product);
+       
 
     }
 }

@@ -13,6 +13,10 @@ namespace DataAccess.Repositories
     {
         NTierArchitectureContext context = new NTierArchitectureContext();
 
+        public List<Product> GetAll()
+        {
+            throw new NotImplementedException();
+        }
         public void Add(Product product)
         {
 
@@ -26,11 +30,7 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public List<Product> ListProducts()
-        {
-            return context.Products.ToList();
-
-        }
+        
 
         public void Update(Product product)
         {
