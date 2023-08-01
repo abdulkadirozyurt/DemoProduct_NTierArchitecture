@@ -20,14 +20,7 @@ namespace Business.Concretes
 
         public void TAdd(Product entity)
         {
-            if (entity.Name.Length >= 5 && entity.UnitPrice >= 1 && entity.Name != null)
-            {
-                _productDal.Add(entity);
-            }
-            else
-            {
-                //hata mesajları 
-            }
+           
 
 
 
