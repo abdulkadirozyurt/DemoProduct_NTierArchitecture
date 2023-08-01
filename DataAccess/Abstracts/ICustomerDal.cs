@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    public interface ICustomerDal:IGenericDal<Customer>
+    public interface ICustomerDal : IGenericDal<Customer>
     {
-        
+
     }
 }

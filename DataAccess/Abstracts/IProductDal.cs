@@ -9,7 +9,7 @@ namespace DataAccess.Abstracts
 {
     public interface IProductDal : IGenericDal<Product>
     {
-       
+
 
     }
 }
