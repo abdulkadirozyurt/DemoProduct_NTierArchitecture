@@ -20,30 +20,27 @@ namespace Business.Concretes
 
         public void TAdd(Product entity)
         {
-           
-
-
-
+            _productDal.Add(entity);
         }
 
         public void TDelete(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(entity);
         }
 
         public List<Product> TGetAll()
         {
-            throw new NotImplementedException();
+            return _productDal.GetAll();
         }
 
         public Product TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.GetById(id);
         }
 
         public void TUpdate(Product entity)
         {
-            throw new NotImplementedException();
+           _productDal.Update(entity);
         }
     }
 }
