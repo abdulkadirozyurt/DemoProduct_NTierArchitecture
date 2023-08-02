@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Concretes;
 using DataAccess.EntityFramework;
+using Entites.Concretes;
 
 namespace DemoProduct_NTierArchitecture.Controllers
 {
@@ -18,5 +19,20 @@ namespace DemoProduct_NTierArchitecture.Controllers
 
             return View(products);
         }
+
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(Product product)
+        {
+            productManager.TAdd(product);
+            return RedirectToAction("Index");
+        }
+
     }
 }
