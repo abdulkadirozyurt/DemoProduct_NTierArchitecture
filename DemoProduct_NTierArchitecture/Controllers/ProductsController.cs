@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Concretes;
+using Business.FluentValidation;
 using DataAccess.EntityFramework;
 using Entites.Concretes;
+using FluentValidation.Results;
 
 namespace DemoProduct_NTierArchitecture.Controllers
 {
@@ -30,8 +32,22 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            productManager.TAdd(product);
-            return RedirectToAction("Index");
+            ProductValidator productValidator = new ProductValidator();
+            ValidationResult result = productValidator.Validate(product);
+            if (result.IsValid)
+            {
+                productManager.TAdd(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+            }
+
+            return View();
         }
 
     }
