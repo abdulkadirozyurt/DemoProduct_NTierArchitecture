@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Concretes;
 using Business.FluentValidation;
-using DataAccess.EntityFramework;
+using DataAccess.Concretes.EntityFramework;
 using Entites.Concretes;
 using FluentValidation.Results;
 
@@ -49,6 +49,34 @@ namespace DemoProduct_NTierArchitecture.Controllers
 
             return View();
         }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            //first step, we will find related entity, second step we will delete it.
+            var product = productManager.TGetById(id);
+            productManager.TDelete(product);
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult UpdateProduct(int id)
+        {
+            var product = productManager.TGetById(id);
+
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(Product product)
+        {
+            
+            productManager.TUpdate(product);
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
