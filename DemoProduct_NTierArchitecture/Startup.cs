@@ -24,6 +24,7 @@ namespace DemoProduct_NTierArchitecture
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddLocalization(services => services.ResourcesPath="Resources");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +53,9 @@ namespace DemoProduct_NTierArchitecture
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseRequestLocalization();
+
         }
     }
 }

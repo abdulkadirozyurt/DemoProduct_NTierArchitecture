@@ -33,15 +33,15 @@ namespace DemoProduct_NTierArchitecture.Controllers
         public IActionResult AddProduct(Product product)
         {
             ProductValidator productValidator = new ProductValidator();
-            ValidationResult result = productValidator.Validate(product);
-            if (result.IsValid)
+            ValidationResult results = productValidator.Validate(product);
+            if (results.IsValid)
             {
                 productManager.TAdd(product);
                 return RedirectToAction("Index");
             }
             else
             {
-                foreach (var error in result.Errors)
+                foreach (var error in results.Errors)
                 {
                     ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 }
@@ -57,6 +57,7 @@ namespace DemoProduct_NTierArchitecture.Controllers
             productManager.TDelete(product);
 
             return RedirectToAction("Index");
+
         }
 
 
@@ -70,12 +71,12 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpPost]
         public IActionResult UpdateProduct(Product product)
         {
-            
+
             productManager.TUpdate(product);
 
             return RedirectToAction("Index");
         }
-
+        
 
 
     }
