@@ -9,5 +9,6 @@ namespace Business.Abstracts
 {
     public interface ICustomerService : IGenericService<Customer>
     {
+        List<Customer> GetCustomersWithJob();
     }
 }

@@ -9,6 +9,6 @@ namespace Business.Abstracts
 {
     public interface IJobService : IGenericService<Job>
     {
-
+        
     }
 }

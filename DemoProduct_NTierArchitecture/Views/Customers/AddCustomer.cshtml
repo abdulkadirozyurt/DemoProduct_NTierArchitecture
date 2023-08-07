@@ -1,4 +1,5 @@
 ﻿@model Entites.Concretes.Customer
+
 @{
     ViewData["Title"] = "AddCustomer";
     Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -16,9 +17,32 @@
     @Html.Label("Şehir")
     @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.City)
+    <br />
 
+    @Html.Label("Müşteri Mesleği")
+    @Html.DropDownListFor(x => x.JobId, (List<SelectListItem>)ViewBag.j, new { @class = "form-control" })
     <br />
 
     <button class="btn btn-outline-primary">Ekle</button>
 </form>
 
+
+
+
+@*
+
+    (List<SelectListItem>)ViewBag.j
+
+
+    we will do it because explicitly type conversion is required
+
+*@
+
+
+@*
+
+    DropDownListFor
+
+    - The first parameter specifies the model property which the selected value will be assigned 
+
+*@

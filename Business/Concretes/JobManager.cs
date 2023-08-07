@@ -40,5 +40,7 @@ namespace Business.Concretes
         {
             _jobDal.Update(entity);
         }
+
+        
     }
 }

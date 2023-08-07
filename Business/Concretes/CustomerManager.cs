@@ -38,5 +38,10 @@ namespace Business.Concretes
         {
             _customerDal.Update(entity);
         }
+
+        public List<Customer> GetCustomersWithJob()
+        {
+           return _customerDal.GetCustomersWithJob();
+        }
     }
 }

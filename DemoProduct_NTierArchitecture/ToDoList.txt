@@ -1,0 +1,12 @@
+﻿1- Arama İşlemi
+2- Üyelik İşlemi
+3- Identity 
+4- Yardım popup
+5- Footer
+6- Ayarlar 
+7- Çıkış Yap
+8- Giriş Yap
+9- Yeni Üye kaydı
+10- Admin --> Asp.Net USer
+11- Publish
+12- Projenin Canlıya Taşınması

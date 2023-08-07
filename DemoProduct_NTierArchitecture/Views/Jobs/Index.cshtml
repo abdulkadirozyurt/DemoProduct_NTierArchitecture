@@ -1,5 +1,6 @@
 ﻿@using Entites.Concretes
 @model List<Job>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -13,7 +14,8 @@
 
     <tr>
         <th>#</th>
-        <th>Title</th>
+        <th>Meslek Adı</th>
+        <th>İlgili Personeller</th>
         <th></th>
     </tr>
     
@@ -22,10 +24,12 @@
         <tr>
             <td>@item.Id</td>
             <td>@item.Title</td>
+            <td></td>
             <td>
                 
                 <a href="/Jobs/DeleteJob/@item.Id" class="btn btn-outline-danger">Sil</a>
                 <a href="/Jobs/UpdateJob/@item.Id" class="btn btn-outline-success">Güncelle</a>
+                <a href="/Jobs/JobDetails/@item.Id" class="btn btn-outline-primary">Detaylar</a>
 
             </td>
             

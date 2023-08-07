@@ -9,6 +9,7 @@ using Business.FluentValidation;
 using DataAccess.Concretes.EntityFramework;
 using Entites.Concretes;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DemoProduct_NTierArchitecture.Controllers
 {
@@ -16,10 +17,12 @@ namespace DemoProduct_NTierArchitecture.Controllers
     {
         //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         ICustomerService customerService = new CustomerManager(new EfCustomerDal());
+        JobManager jobManager = new JobManager(new EfJobDal());
+
 
         public IActionResult Index()
         {
-            var customers = customerService.TGetAll();
+            var customers = customerService.GetCustomersWithJob();
 
             return View(customers);
         }
@@ -27,6 +30,15 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpGet]
         public IActionResult AddCustomer()
         {
+
+            List<SelectListItem> jobs = (from x in jobManager.TGetAll()
+                                         select new SelectListItem {
+                                             Text = x.Title,
+                                             Value = x.Id.ToString()
+                                         }).ToList();
+
+            ViewBag.j = jobs;
+
             return View();
         }
 
@@ -63,6 +75,15 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
+            List<SelectListItem> jobs = (from x in jobManager.TGetAll()
+                                         select new SelectListItem {
+                                             Text = x.Title,
+                                             Value = x.Id.ToString()
+                                         }).ToList();
+
+            ViewBag.j = jobs;
+
+
             var customer = customerService.TGetById(id);
             return View(customer);
 

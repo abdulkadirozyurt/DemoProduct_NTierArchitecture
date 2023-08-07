@@ -11,6 +11,6 @@ namespace Entites.Concretes
         public int Id { get; set; }
         public string Title { get; set; }
 
-        public List<Customer> customers { get; set; }
+        public List<Customer> Customers { get; set; }
     }
 }

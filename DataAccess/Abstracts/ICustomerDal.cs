@@ -9,6 +9,6 @@ namespace DataAccess.Abstracts
 {
     public interface ICustomerDal : IGenericDal<Customer>
     {
-
+        List<Customer> GetCustomersWithJob();
     }
 }
