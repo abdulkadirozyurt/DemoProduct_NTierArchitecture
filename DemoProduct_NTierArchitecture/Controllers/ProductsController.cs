@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstracts;
 using Business.Concretes;
 using Business.FluentValidation;
 using DataAccess.Concretes.EntityFramework;
@@ -13,11 +14,12 @@ namespace DemoProduct_NTierArchitecture.Controllers
 {
     public class ProductsController : Controller
     {
-        ProductManager productManager = new ProductManager(new EfProductDal());
+        //ProductManager productManager = new ProductManager(new EfProductDal());
+        private IProductService productService = new ProductManager(new EfProductDal());
 
         public IActionResult Index()
         {
-            var products = productManager.TGetAll();
+            var products = productService.TGetAll();
 
             return View(products);
         }
@@ -36,7 +38,7 @@ namespace DemoProduct_NTierArchitecture.Controllers
             ValidationResult results = productValidator.Validate(product);
             if (results.IsValid)
             {
-                productManager.TAdd(product);
+                productService.TAdd(product);
                 return RedirectToAction("Index");
             }
             else
@@ -53,8 +55,8 @@ namespace DemoProduct_NTierArchitecture.Controllers
         public IActionResult DeleteProduct(int id)
         {
             //first step, we will find related entity, second step we will delete it.
-            var product = productManager.TGetById(id);
-            productManager.TDelete(product);
+            var product = productService.TGetById(id);
+            productService.TDelete(product);
 
             return RedirectToAction("Index");
 
@@ -64,7 +66,7 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(int id)
         {
-            var product = productManager.TGetById(id);
+            var product = productService.TGetById(id);
 
             return View(product);
         }
@@ -72,11 +74,11 @@ namespace DemoProduct_NTierArchitecture.Controllers
         public IActionResult UpdateProduct(Product product)
         {
 
-            productManager.TUpdate(product);
+            productService.TUpdate(product);
 
             return RedirectToAction("Index");
         }
-        
+
 
 
     }

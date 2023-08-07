@@ -6,8 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstracts;
+using DataAccess.Concretes;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoProduct_NTierArchitecture
 {
@@ -24,7 +29,8 @@ namespace DemoProduct_NTierArchitecture
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddLocalization(services => services.ResourcesPath="Resources");
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +60,7 @@ namespace DemoProduct_NTierArchitecture
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseRequestLocalization();
+            
 
         }
     }

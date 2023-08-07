@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entites.Concretes
 {
-    public class Customer
+    public class Job
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
-        public int JobId { get; set; } 
-        
+        public string Title { get; set; }
 
-
+        public List<Customer> customers { get; set; }
     }
 }

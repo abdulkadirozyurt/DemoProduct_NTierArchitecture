@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstracts;
 using Business.Concretes;
 using Business.FluentValidation;
 using DataAccess.Concretes.EntityFramework;
@@ -13,11 +14,12 @@ namespace DemoProduct_NTierArchitecture.Controllers
 {
     public class CustomersController : Controller
     {
-        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        ICustomerService customerService = new CustomerManager(new EfCustomerDal());
 
         public IActionResult Index()
         {
-            var customers = customerManager.TGetAll();
+            var customers = customerService.TGetAll();
 
             return View(customers);
         }
@@ -31,11 +33,11 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpPost]
         public IActionResult AddCustomer(Customer customer)
         {
-            CustomerValidator customerValidator= new CustomerValidator();
+            CustomerValidator customerValidator = new CustomerValidator();
             ValidationResult result = customerValidator.Validate(customer);
             if (result.IsValid)
             {
-                customerManager.TAdd(customer);
+                customerService.TAdd(customer);
 
                 return RedirectToAction("Index");
             }
@@ -43,7 +45,7 @@ namespace DemoProduct_NTierArchitecture.Controllers
             {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(error.PropertyName,error.ErrorMessage);
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 }
             }
 
@@ -52,8 +54,8 @@ namespace DemoProduct_NTierArchitecture.Controllers
 
         public IActionResult DeleteCustomer(int id)
         {
-            var customer = customerManager.TGetById(id);
-            customerManager.TDelete(customer);
+            var customer = customerService.TGetById(id);
+            customerService.TDelete(customer);
 
             return RedirectToAction("Index");
         }
@@ -61,16 +63,16 @@ namespace DemoProduct_NTierArchitecture.Controllers
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
-            var customer = customerManager.TGetById(id);
+            var customer = customerService.TGetById(id);
             return View(customer);
 
-            
+
         }
 
         [HttpPost]
         public IActionResult UpdateCustomer(Customer customer)
         {
-            customerManager.TUpdate(customer);
+            customerService.TUpdate(customer);
 
             return RedirectToAction("Index");
         }

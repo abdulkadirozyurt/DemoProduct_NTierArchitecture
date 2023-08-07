@@ -10,6 +10,7 @@ namespace DataAccess.Concretes
 {
     public class NTierArchitectureContext : DbContext
     {
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"server=abdulkadirF17; database=UdemyNTierArchitecture;integrated security=true");
@@ -18,7 +19,7 @@ namespace DataAccess.Concretes
         public DbSet<Product> Products { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Job> Jobs { get; set; }
 
     }
 }
