@@ -1,4 +1,5 @@
 ﻿using Entites.Concretes;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes
 {
-    public class NTierArchitectureContext : DbContext
+    public class NTierArchitectureContext : IdentityDbContext
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
