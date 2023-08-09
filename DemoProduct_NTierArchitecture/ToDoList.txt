@@ -2,7 +2,7 @@
 2- Üyelik İşlemi
 3- Identity 
 4- Yardım popup
-5- Footer
+5- Footer										#
 6- Ayarlar 
 7- Çıkış Yap
 8- Giriş Yap
