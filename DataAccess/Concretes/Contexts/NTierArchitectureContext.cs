@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes
 {
-    public class NTierArchitectureContext : IdentityDbContext
+    public class NTierArchitectureContext : IdentityDbContext<AppUser, AppRole, int>
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,3 +28,12 @@ namespace DataAccess.Concretes
 
 
 // this class will create database with tables that we name and map out entities to tables
+
+
+/*IdentityDbContext<AppUser, AppRole, int>
+ 
+ identity ye karşılık gelen user tablosunu entity olarak veriyoruz, yani AppUser entity'sinin field'ları + IdentityUser'ın fieldları olmuş oluyor. Aynı şekilde role için de öyle
+ 
+ 
+ */
+ 
